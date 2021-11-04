@@ -5,48 +5,41 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="Styling.css">
+    <script src="scriptingFelix.js"></script>
+    <script src="scripting.js"></script>
     <script>
-        function mijnfunctie(){
+        function voegBestellingToe(){
+            let bestellingObj = {};
+            bestellingObj.klantNaam = document.getElementById("klantnaaminvoer").value;
+            let bestellingJSON = JSON.stringify(bestellingObj);
             let vanmij = new XMLHttpRequest();
             vanmij.onreadystatechange = function(){
                 if(this.readyState == 4){
-                    console.log(this.responseText);
-                    var hetantwoord = JSON.parse(this.responseText);
-                    document.getElementById("uitkomst").innerHTML = hetantwoord[0];
-
+                    console.log("terug van voegbestellingtoe");
                 }
-            }
-            vanmij.open("GET","https://localhost:44344/api/Ali",true);
-            vanmij.send();
+            }    
+            vanmij.open("POST","https://localhost:44344/api/Bestelling/voegBestellingToe",true);
+            vanmij.setRequestHeader("Content-Type","application/json");
+            vanmij.send(bestellingJSON);
         }
-        function alleProductenTonenInTabel(){
+        function toonAlleBestelling(){
             let vanmij = new XMLHttpRequest();
             vanmij.onreadystatechange = function(){
-                if(this.readyState == 4){
-                    console.log(this.responseText);
-                    var arrayMetProducten = JSON.parse(this.responseText);
-                    var tabelelem = document.getElementById("productenTabel");
-                    tabelelem.innerHTML = "";
-                    tabelelem.innerHTML += "<tr><th>naam</th><th>prijs</th><th>omschrijving</th></tr>";
-                    for( var i = 0 ; i < arrayMetProducten.length ; i++  ){
-                        tabelelem.innerHTML += " <tr><td>"+ arrayMetProducten[i].naam +"</td><td>"+ arrayMetProducten[i].prijs +"</td><td>"+ arrayMetProducten[i].specificaties +"</td></tr>";
-                    }
+            if(this.readyState == 4){
+                console.log(this.responseText);
+                var arrayMetBestelling= JSON.parse(this.responseText);
+                var tabelelem = document.getElementById("tabelBestellingen");
+                tabelelem.innerHTML = "";
+                tabelelem.innerHTML += "<tr><th>naam</th><th>prijs</th><th>omschrijving</th></tr>";
+                for( var i = 0 ; i < arrayMetBestelling.length ; i++  ){
+                    tabelelem.innerHTML += " <tr><td>"+ arrayMetBestelling[i].datum +"</td><td>"+ arrayMetBestelling[i].status +"</td><td>"+ arrayMetBestelling[i].klantNaam +"</td></tr>";
                 }
-            }
-            vanmij.open("GET","https://localhost:44344/api/Ali/LijstProducten",true);
-            vanmij.send();
         }
-
-/*
-        <table border=1>
-        <tr><th>naam</th><th>prijs</th><th>omschrijving</th></tr>
-        <tr><td>ijsco</td><td>4</td><td>om schrijving</td></tr>
-        <tr><td>schoen</td><td>5</td><td>omschrijv ing</td></tr>
-    </table>
-*/
-
-
-
+    }
+    vanmij.open("GET","https://localhost:44344/api/Bestelling/alleBestellingen",true);
+    vanmij.send();
+}
     </script>
 </head>
 <body>
@@ -54,7 +47,21 @@
     <div id=uitkomst></div>
     <input type=button value="Toon Alle Producten" onclick="alleProductenTonenInTabel()">
     <table id="productenTabel">
-
     </table>
+    <hr><hr><hr>
+    <h1>Bestellingen</h1>
+    <div class="kopjeBestelling">
+        Datum <input type="date" id="datuminvoer"><br>
+        Status<input type="text" id="statusinvoer"><br>
+        Klantnaam <input type="text" id="klantnaaminvoer"><br>
+        <input type="button" onclick="voegBestellingToe()" value="Voeg Bestelling Toe">
+    </div>
+    <hr><hr><hr>
+    <div class="overzichtBestelling">
+        <div><input type=button onclick="toonAlleBestelling()" value="Toon Alle Bestellingen"></div>
+        <table id="tabelBestellingen">
+
+        </table>
+    </div>
 </body>
 </html>
