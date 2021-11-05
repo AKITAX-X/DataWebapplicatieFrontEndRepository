@@ -5,26 +5,46 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="Styling.css">
-    <script src="scripting.js"></script>
+    
     <title>Document</title>
 
 </head>
 <body>
-    <input type="button" value="Click Here" onclick="AliClickt()">
+    <!-- <input type="button" value="Click Here" onclick="AliClickt()">
     <input type="button" value="Click Here Also" onclick="Testnaam()">
     <p id="mijnelement"></p>
 
 
 
 
-    
+    <div class="testtabel">
         <label for="fname">Naam</label>
         <input type="text" id="PnaamPprijs" name="fname"><br><br>
-      
-
       <input type="button" value="Alle Producten" onclick="alleProductenTonenInTabel()">
       <input type="button" value="Save Product" onclick="savetabel()">
+    </div> -->
+
+    <div class="InvoerTabel">
+      <form id="productForm"> 
+      Productnaam <input type="text" id="productNaamInvoer"><br>
+        Prijs <input type="number" id="productPrijsInvoer"><br>
+        Specs <input type="text" id="productSpecsInvoer"><br>
+        <button type="submit"> Voeg Product Toe </button>
+        <button type="reset"> Clear Fields </button>
+      </form>
+    </div>
+
+ 
 
 
+    <div class="overzichtProducten">
+        <div><input type=button onclick="toonAlleProducten()" value="Toon Alle Producten"></div>
+        <table id="tabelProducten">
+        </table>
+    </div>
+
+
+
+    <script src="scripting.js"></script>
 </body>
 </html>
