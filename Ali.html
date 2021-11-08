@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="Styling.css">
-    
+    <script src="scripting.js"></script>
     <title>Document</title>
 
 </head>
@@ -25,16 +25,12 @@
     </div> -->
 
     <div class="InvoerTabel">
-      <form id="productForm"> 
       Productnaam <input type="text" id="productNaamInvoer"><br>
         Prijs <input type="number" id="productPrijsInvoer"><br>
         Specs <input type="text" id="productSpecsInvoer"><br>
-        <button type="submit"> Voeg Product Toe </button>
-        <button type="reset"> Clear Fields </button>
-      </form>
+        
+        <input type="button" onclick="voegProductToe()" value="Voeg Product Toe">
     </div>
-
- 
 
 
     <div class="overzichtProducten">
@@ -45,6 +41,6 @@
 
 
 
-    <script src="scripting.js"></script>
+
 </body>
 </html>
