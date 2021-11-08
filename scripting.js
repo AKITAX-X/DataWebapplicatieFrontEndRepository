@@ -91,11 +91,13 @@ function toonAlleProducten(){
         var arrayMetProducten= JSON.parse(this.responseText);
         var tabelelem = document.getElementById("tabelProducten");
 
-        tabelelem.innerHTML = "<tr><th>naam</th><th>prijs</th><th>omschrijving</th></tr>";
+        tabelelem.innerHTML = "<tr><th>naam</th><th>prijs</th><th>omschrijving</th><th>acties</th></tr>";
         for(var i = 0; i < arrayMetProducten.length; i++ )
 
         {
-            tabelelem.innerHTML += "<tr><td>"+arrayMetProducten[i].naam + "</td><td>"+arrayMetProducten[i].prijs + "</td><td>"+arrayMetProducten[i].specificaties + "</td></tr>";
+            tabelelem.innerHTML += "<tr><td>"+arrayMetProducten[i].naam + "</td><td>"+arrayMetProducten[i].prijs + 
+            "</td><td>"+arrayMetProducten[i].specificaties + "</td><td> <input type='button' onclick='verwijderProduct("+ arrayMetProducten[i].id
+            +")' value='Verwijder'></td></tr>";
 
         }
         
@@ -110,4 +112,27 @@ function toonAlleProducten(){
 }
 vanali.open("GET","https://localhost:44344/api/Ali/alleProducten",true);
 vanali.send();
+}
+
+
+function verwijderProduct(id)
+{
+    let vanali = new XMLHttpRequest();
+    vanali.onreadystatechange = function(){
+        if(this.readyState == 4)
+        {
+            toonAlleProducten();
+            alert("Product is verwijderd");
+            
+        }
+    }
+
+
+    
+
+    vanali.open("DELETE","https://localhost:44344/api/Ali/verwijderProduct/" + id,true);
+    vanali.send();
+
+    
+
 }
