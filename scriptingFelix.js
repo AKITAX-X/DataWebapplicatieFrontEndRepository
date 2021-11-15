@@ -1,3 +1,27 @@
+
+window.onload = function(){
+
+    ffproberen();
+}
+
+
+function ffproberen(){
+    console.log("in ffproberen");
+    var a = "hoi";
+    var testmultiline = `
+        <div>dit</div>
+        zijn
+        ${a}
+        meerdere lijnen
+    `
+    document.getElementById("snelchecken").innerHTML = testmultiline;
+}
+
+
+
+
+
+
 function mijnfunctie(){
     let vanmij = new XMLHttpRequest();
     vanmij.onreadystatechange = function(){
