@@ -9,37 +9,10 @@
     <script src="scriptingFelix.js"></script>
     <script src="scripting.js"></script>
     <script>
-        function voegBestellingToe(){
-            let bestellingObj = {};
-            bestellingObj.klantNaam = document.getElementById("klantnaaminvoer").value;
-            let bestellingJSON = JSON.stringify(bestellingObj);
-            let vanmij = new XMLHttpRequest();
-            vanmij.onreadystatechange = function(){
-                if(this.readyState == 4){
-                    console.log("terug van voegbestellingtoe");
-                }
-            }    
-            vanmij.open("POST","https://localhost:44344/api/Bestelling/voegBestellingToe",true);
-            vanmij.setRequestHeader("Content-Type","application/json");
-            vanmij.send(bestellingJSON);
+        window.onload = function(){
+
+            ffproberen();
         }
-        function toonAlleBestelling(){
-            let vanmij = new XMLHttpRequest();
-            vanmij.onreadystatechange = function(){
-            if(this.readyState == 4){
-                console.log(this.responseText);
-                var arrayMetBestelling= JSON.parse(this.responseText);
-                var tabelelem = document.getElementById("tabelBestellingen");
-                tabelelem.innerHTML = "";
-                tabelelem.innerHTML += "<tr><th>naam</th><th>prijs</th><th>omschrijving</th></tr>";
-                for( var i = 0 ; i < arrayMetBestelling.length ; i++  ){
-                    tabelelem.innerHTML += " <tr><td>"+ arrayMetBestelling[i].datum +"</td><td>"+ arrayMetBestelling[i].status +"</td><td>"+ arrayMetBestelling[i].klantNaam +"</td></tr>";
-                }
-        }
-    }
-    vanmij.open("GET","https://localhost:44344/api/Bestelling/alleBestellingen",true);
-    vanmij.send();
-}
     </script>
 </head>
 <body>
@@ -62,6 +35,10 @@
         <table id="tabelBestellingen">
 
         </table>
+    </div>
+    <hr><hr>
+    <div id=snelchecken>
+        
     </div>
 
 

@@ -63,6 +63,10 @@
 //     vanali.send(productJSON);
 // }
 
+function ffdemonstreren(){
+    
+}
+
 
 function voegProductToe()
 {
