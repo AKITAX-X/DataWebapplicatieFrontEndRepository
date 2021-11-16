@@ -21,9 +21,7 @@ productContainers.forEach((item, i) => {
 
 // Function to add a brand name--------------------------------------------------------------------
 
-window.onload = function () {
-    korteAlert();
-}
+
 
 function korteAlert() {
     let productObj = {};
@@ -44,13 +42,11 @@ function korteAlert() {
 
         }
     }
-
-
-
-
     vanali.open("GET", "https://localhost:44344/api/Ali/alleProducten", true);
     vanali.send();
 }
+
+
 
 function voegProductKaartToe(productObjACT) {
     var productContainer = document.getElementsByClassName("product-container");
@@ -84,4 +80,45 @@ function voegProductKaartToe(productObjACT) {
 function productPagina(productId) {
 
     window.location = 'detailsProducten.html?pi=' + productId;
+
+}
+
+function ProductPagin() 
+
+{
+    let productObj = {};
+
+    let vanali = new XMLHttpRequest();
+    vanali.onreadystatechange = function () {
+        if (this.readyState == 4) {
+            console.log(this.responseText);
+        
+        }
+
+    }
+
+
+
+    vanali.open("GET", "https://localhost:44344/api/Ali/alleProducten", true);
+    vanali.send();
+}
+
+
+function checkdetails()
+{
+const urlParams = new URLSearchParams(window.location.search);
+const Productid = urlParams.get('pi');
+
+console.log(Productid)
+var xhr = new XMLHttpRequest();
+xhr.onreadystatechange = function(){
+    if(this.readyState == 4){
+    console.log(this.responseText)
+    var hetObj = JSON.parse(this.responseText);
+    document.getElementById("test-image").src = "/img/" + hetObj.fotonaam
+    }
+}
+
+xhr.open("GET","https://localhost:44344/api/Product/" + Productid,true);
+xhr.send();
 }
