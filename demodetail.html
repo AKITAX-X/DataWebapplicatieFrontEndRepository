@@ -1,0 +1,27 @@
+<script>
+    window.onload = function(){
+        checkdetails();
+        tweedecheckvooralleBesteldeProducten();
+    }
+
+
+    function tweedecheckvooralleBesteldeProducten(){
+        let vanmij = new XMLHttpRequest();
+        vanmij.onreadystatechange = function () {
+        if (this.readyState == 4) {
+            console.log(this.responseText);
+        }
+    }
+    vanmij.open("GET", "https://localhost:44344/api/bestelling/alleBesteldeProducten", true);
+    vanmij.send();
+    }
+</script>
+<script src="scriptingFelix.js"></script>
+
+
+
+
+
+
+
+go
