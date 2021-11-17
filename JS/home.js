@@ -79,28 +79,8 @@ function voegProductKaartToe(productObjACT) {
 
 function productPagina(productId) {
 
-    window.location = 'detailsProducten.html?pi=' + productId;
+    window.location = 'Product.html?pi=' + productId;
 
-}
-
-function ProductPagin() 
-
-{
-    let productObj = {};
-
-    let vanali = new XMLHttpRequest();
-    vanali.onreadystatechange = function () {
-        if (this.readyState == 4) {
-            console.log(this.responseText);
-        
-        }
-
-    }
-
-
-
-    vanali.open("GET", "https://localhost:44344/api/Ali/alleProducten", true);
-    vanali.send();
 }
 
 
@@ -115,7 +95,11 @@ xhr.onreadystatechange = function(){
     if(this.readyState == 4){
     console.log(this.responseText)
     var hetObj = JSON.parse(this.responseText);
-    document.getElementById("test-image").src = "/img/" + hetObj.fotonaam
+    const slider = document.querySelector('.image-slider');
+    slider.style.backgroundImage = `url('/img/${hetObj.fotonaam}')`;
+
+    const sliderimage = document.getElementById("product-images-1");
+    sliderimage.src = "/img/" + hetObj.fotonaam;
     }
 }
 
