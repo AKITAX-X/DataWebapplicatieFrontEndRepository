@@ -1,6 +1,7 @@
 productids = [];
         window.onload = function () {
-            var bestellingproductids = JSON.parse(localStorage.getItem("geheimesleutelvancheapswinkel"));
+            var bestellingproductids = [];
+            // JSON.parse(localStorage.getItem("geheimesleutelvancheapswinkel"));
             const urlParams = new URLSearchParams(window.location.search);
             const productid = urlParams.get('productid');
             bestellingproductids.push(productid);
