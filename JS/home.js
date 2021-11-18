@@ -97,7 +97,8 @@ xhr.onreadystatechange = function(){
     var hetObj = JSON.parse(this.responseText);
     const slider = document.querySelector('.image-slider');
     slider.style.backgroundImage = `url('/img/${hetObj.fotonaam}')`;
-
+    var geheimkastje = document.getElementById("geheimkastje");
+    geheimkastje.value = hetObj.id;
     const sliderimage = document.getElementById("product-images-1");
     sliderimage.src = "/img/" + hetObj.fotonaam;
     }
