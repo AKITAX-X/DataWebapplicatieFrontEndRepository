@@ -1,0 +1,40 @@
+<script>
+    function toevoegenProduct(){
+        var teversturenproduct = {};
+        teversturenproduct.naam = document.getElementById("naaminput").value;
+        teversturenproduct.prijs = parseInt(document.getElementById("prijsinput").value);
+        teversturenproduct.specificaties = document.getElementById("specificatiesinput").value;
+        teversturenproduct.fotonaam = document.getElementById("fotonaaminput").value;
+        teversturenproduct.discount = parseInt(document.getElementById("discountinput").value);
+        console.log(teversturenproduct);
+        versturen(teversturenproduct);
+    }
+    function versturen(hetproduct){
+        var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function(){
+
+        }
+        xhr.open("POST", "https://localhost:44344/api/product/nieuwproduct", true);
+        xhr.setRequestHeader("Content-Type","application/json");
+        var objJSON = JSON.stringify(hetproduct)
+        xhr.send(objJSON);
+    }
+</script>
+
+
+<div>
+    naam: <input type=text id="naaminput">
+</div>
+<div>
+prijs: <input type=text id="prijsinput">
+</div>
+<div>
+specificaties: <textarea type=text id="specificatiesinput"></textarea>
+</div>
+<div>
+fotonaam: <input type=text id="fotonaaminput">
+</div>
+<div>
+korting: <input type=text id="discountinput">
+</div>
+<button onclick="toevoegenProduct()">toevoegen</button>
