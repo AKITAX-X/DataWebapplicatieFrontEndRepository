@@ -1,7 +1,12 @@
 <script>window.onload = function () {
         checkdetails();
     }
-
+    function voegtoeaanbestelling(){
+        var productid = document.getElementById("geheimkastje").value;
+        console.log("voeg toe aan bestelling");
+        console.log(">>"+productid);
+        window.location = "bestelling.html?productid="+productid;
+    }
 </script>
 
 
@@ -45,7 +50,8 @@
             <input type="radio" name="size" value="l" hidden id="l-size">
             <label for="l-size" class="size-radio-btn">l</label>
             <div>
-                <button class="btn cart-btn">add to cart</button>
+                <button class="btn cart-btn" id="toevoegknop" onclick="voegtoeaanbestelling()">add to cart</button>
+                <input type=text id="geheimkastje" >
                 <button class="btn">add to whishlist</button>
             </div>
         </div>
