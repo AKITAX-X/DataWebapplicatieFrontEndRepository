@@ -1,24 +1,120 @@
-<script>
-productids = [];
-window.onload = function () {
-    var bestellingproductids = JSON.parse(localStorage.getItem("geheimesleutelvancheapswinkel"));
-    //var bestellingproductids = []
-    const urlParams = new URLSearchParams(window.location.search);
-    const productid = urlParams.get('productid');
-    bestellingproductids.push(productid);
-    localStorage.setItem("geheimesleutelvancheapswinkel", JSON.stringify(bestellingproductids));
-    productids = bestellingproductids;
-    toonbestelling();
-}
-function toonbestelling(){
-    var overz = document.getElementById("overzicht");
-    for(var x =0 ; x < productids.length; x++){
-        overz.innerHTML += ">>"+productids[x]+"<br>";
-    }
-}
 
-</script>
 
-<div id=overzicht>
+
 
 </div>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/home.css">
+    <link rel="stylesheet" href="/css/bestelling.css">
+    
+
+
+</head>
+<body>
+
+    
+    <nav class="navbar"></nav>
+
+    <section class="search-results">
+        <h2 class="heading">Orders <span>product</span></h2>
+        <div class="product-container">
+            
+            <!-- <div id=overzicht></div> -->
+
+            <table>
+                <thead>
+                  <tr>
+                    <th>Option</th>
+                    <th>Default</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>showSpeed</strong></td>
+                    <td>15</td>
+                    <td>The speed of the show/reveal</td>
+                  </tr>
+                  <tr>
+                    <td><strong>showEasing</strong></td>
+                    <td>'linear'</td>
+                    <td>The easing of the show/reveal</td>
+                  </tr>
+                  <tr>
+                    <td><strong>hideSpeed</strong></td>
+                    <td>50</td>
+                    <td>The speed of the hide/conceal</td>
+                  </tr>
+                  <tr>
+                    <td><strong>hideEasing</strong></td>
+                    <td>'linear'</td>
+                    <td>The easing of the hide/conceal</td>
+                  </tr>					
+                  <tr>
+                    <td><strong>width</strong></td>
+                    <td>'auto'</td>
+                    <td>The width that the data will be truncated to - <em>('auto' or px amount)</em></td>
+                  </tr>
+                  <tr>
+                    <td><strong>ellipsis</strong></td>
+                    <td>true</td>
+                    <td>Set to true to enable the ellipsis</td>
+                  </tr>
+                  <tr>
+                    <td><strong>title</strong></td>
+                    <td>false</td>
+                    <td>Set to true to show the full data on hover</td>
+                  </tr>
+                  <tr>
+                    <td><strong>afterShow</strong></td>
+                    <td> $.noop</td>
+                    <td>The callback fired after the show/reveal</td>
+                  </tr>
+                  <tr>
+                    <td><strong>afterHide</strong></td>
+                    <td>$.noop</td>
+                    <td>The callback fired after the hide/conceal</td>
+                  </tr>
+                </tbody>
+              </table>
+
+
+
+            
+
+
+            
+        </div> 
+    </section>
+
+
+    
+
+    <footer></footer>
+    <script src="/JS/bestelling.js"></script>
+    <script src="/JS/nav.js"></script>
+    <script src="/JS/footer.js"></script>
+
+</body>
+</html>
+
+<!-- Product capsule 1 -->
+            <!-- <div class="product-card">
+                <div class="product-image">
+                    <span class="discount-tag">50% off</span>
+                    <img src="/img/ring 1.jpg" class="product-thumb" alt="">
+                    <button class="card-btn">add to whishlist</button>
+                </div>
+                <div class="product-info">
+                    <h2 class="product-brand" id="brand-input">brand</h2>
+                    <p class="product-specs" id="specs-input">a short info line about the product</p>
+                    <span class="price" id="price-input">€20</span><span class="actual-price">€40</span>
+                </div>
+            </div> -->
