@@ -1,27 +1,73 @@
-<script>
-    function toevoegenProduct(){
-        var teversturenproduct = {};
-        teversturenproduct.naam = document.getElementById("naaminput").value;
-        teversturenproduct.prijs = parseInt(document.getElementById("prijsinput").value);
-        teversturenproduct.specificaties = document.getElementById("specificatiesinput").value;
-        teversturenproduct.fotonaam = document.getElementById("fotonaaminput").value;
-        teversturenproduct.discount = parseInt(document.getElementById("discountinput").value);
-        console.log(teversturenproduct);
-        versturen(teversturenproduct);
-    }
-    function versturen(hetproduct){
-        var xhr = new XMLHttpRequest();
-        xhr.onreadystatechange = function(){
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aanpassingen</title>
+    <link rel="stylesheet" href="/css/beheerproduct.css">
+    <link rel="stylesheet" href="/css/home.css">
+</head>
+<body>
+    <nav class="navbar"></nav>
 
-        }
-        xhr.open("POST", "https://localhost:44344/api/product/nieuwproduct", true);
-        xhr.setRequestHeader("Content-Type","application/json");
-        var objJSON = JSON.stringify(hetproduct)
-        xhr.send(objJSON);
-    }
-</script>
+    <section class="product">
+        <h2 class="product-category">Card Maker</h2>
+        <div class="product-container">
+
+            <!-- Product Preview -->
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="discount-tag" id="discount-input">50</span>
+                    <img src="/img/IMAGE.png" class="product-thumb" alt="">
+                    <button class="card-btn">add to whishlist</button>
+                </div>
+                <div class="product-info">
+                    <h2 class="product-brand" id="brand-input">brand</h2>
+                    <p class="product-specs" id="specs-input">a short info line about the product</p>
+                    <span class="price" id="price-input">€20</span><span id="actual-price" class="actual-price">€40</span>
+                </div>
+            </div>
+            <!-- Product capsule 1 -->
+            <div class="Form">
+                <div class="user-box">
+                    <input id="user-box-name" type="text" name="" required="">
+                    <label >Name</label>
+                </div>
+                <div class="user-box">
+                    <input id="user-box-price"  type="number" name="" required="">
+                    <label>Price</label>
+                </div>
+                <div class="user-box">
+                    <input id="user-box-specs" type="text" name="" required="">
+                    <label>Specs</label>
+                </div>
+                <div class="user-box">
+                    <input id="user-box-foto"t type="text" name="" required="">
+                    <label>Picture Link</label>
+                </div>
+                <div class="user-box">
+                    <input id="user-box-discount" type="text" name="" required="">
+                    <label>Discount</label>
+                </div>
+                
+
+                <button id="btn" >Preview</button>
+            </div>
+
+   </section>
 
 
+
+    <footer> </footer>
+
+    <script src="/JS/beheerproduct.js"></script>
+    <script src="/JS/nav.js"></script>
+    <script src="/JS/footer.js"></script>
+</body>
+</html>
+
+<!-- 
 <div>
     naam: <input type=text id="naaminput">
 </div>
@@ -38,3 +84,9 @@ fotonaam: <input type=text id="fotonaaminput">
 korting: <input type=text id="discountinput">
 </div>
 <button onclick="toevoegenProduct()">toevoegen</button>
+
+<div class="overzichtProducten">
+    <div><input type=button class="BtnBrdr" onclick="toonAlleProducten()" value="Toon Alle Producten"></div>
+    <table id="tabelProducten">
+    </table>
+</div> -->
