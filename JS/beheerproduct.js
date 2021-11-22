@@ -1,10 +1,10 @@
 function toevoegenProduct(){
     var teversturenproduct = {};
-    teversturenproduct.naam = document.getElementById("naaminput").value;
-    teversturenproduct.prijs = parseInt(document.getElementById("prijsinput").value);
-    teversturenproduct.specificaties = document.getElementById("specificatiesinput").value;
-    teversturenproduct.fotonaam = document.getElementById("fotonaaminput").value;
-    teversturenproduct.discount = parseInt(document.getElementById("discountinput").value);
+    teversturenproduct.naam = document.getElementById("user-box-name").value;
+    teversturenproduct.prijs = parseInt(document.getElementById("user-box-price").value);
+    teversturenproduct.specificaties = document.getElementById("user-box-specs").value;
+    teversturenproduct.fotonaam = document.getElementById("user-box-foto").value;
+    teversturenproduct.discount = parseInt(document.getElementById("user-box-discount").value);
     console.log(teversturenproduct);
     versturen(teversturenproduct);
 }
@@ -72,21 +72,41 @@ function verwijderProduct(id)
     const specsInput = document.getElementById("specs-input");
     const userBoxDiscount = document.getElementById("user-box-discount");
     const discountInput = document.getElementById("discount-input");
+    const uiteindelijkePrijs = document.getElementById("price-input");
+    const fotolayout = document.getElementById("user-box-foto");
+    const fotopreview = document.getElementById("foto-placeholder");
     // const userBoxNewPrice = document.getElementById("user-box-newprice");
     // const newPriceInput = document.getElementById("newprice-input");
 
     function reWrite(text1, text2){
         text1.addEventListener('input', (event) => {
             text2.textContent = event.target.value;
+            console.log(event.target.id);
+            if(event.target.id == 'user-box-price' || event.target.id == 'user-box-discount'){
+                uiteindelijkePrijs.innerHTML = "€"+calcDiscount(userBoxPrice.value, userBoxDiscount.value);
+            }
+            if(event.target.id == 'user-box-foto'){
+                console.log("ja bij foto");
+                fotopreview.src = "img/"+fotolayout.value;
+            }
+            if(event.target.id == "user-box-discount"){
+                discountInput.innerHTML = event.target.value + " %";
+            }
+            if(event.target.id == "user-box-price" ){
+                priceInput.innerHTML = "€"+event.target.value;
+            }
+
         })
     };
 
     function calcDiscount(num1, num2){
         var nieuweprijs = num1 - (num2 / 100) * num1
         nieuweprijs = nieuweprijs.toFixed(2);
+        return nieuweprijs;
     }
 
     reWrite(userBoxName, brandInput);
     reWrite(userBoxPrice, priceInput);
     reWrite(userBoxSpecs, specsInput);
     reWrite(userBoxDiscount, discountInput);
+    reWrite(fotolayout, fotopreview);
