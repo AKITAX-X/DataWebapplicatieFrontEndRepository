@@ -37,13 +37,17 @@ function toonbestelling() {
 //     "</td><td>"+arrayMetProducten[i].specificaties + "</td><td> <input type='button' onclick='verwijderProduct("+ arrayMetProducten[i].id
 //     +")' value='Verwijder'></td></tr>";
 
+function voegNaamToe(){
+    var xhr = new XMLHttpRequest();
+    var klantNaam = document.getElementById("klantnaam-input").value;
+    console.log(klantNaam)
+    xhr.onreadystatechange = function(){
+        if(this.readyState == 4){
+            document.getElementById("klantnaam-input").value = this.responseText;
+        }
+    }
+    xhr.open("GET",`https://localhost:44344/api/bestelling/voegBestellingToe/${klantNaam}`,true);
+    //xhr.setRequestHeader("Content-Type","application/json");
+    xhr.send();
 
-
-
-
-
-
-
-
-
-
+}
