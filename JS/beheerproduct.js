@@ -5,7 +5,6 @@ function toevoegenProduct(){
     teversturenproduct.specificaties = document.getElementById("user-box-specs").value;
     teversturenproduct.fotonaam = document.getElementById("user-box-foto").value;
     teversturenproduct.discount = parseInt(document.getElementById("user-box-discount").value);
-    console.log(teversturenproduct);
     versturen(teversturenproduct);
 }
 function versturen(hetproduct){
@@ -23,8 +22,8 @@ function toonAlleProducten(){
     let vanali = new XMLHttpRequest();
     vanali.onreadystatechange = function(){
     if(this.readyState == 4){
-        console.log(this.responseText);
         var arrayMetProducten= JSON.parse(this.responseText);
+        console.log(arrayMetProducten);
         var tabelelem = document.getElementById("tabelProducten");
 
         tabelelem.innerHTML = "<tr><th>naam</th><th>prijs</th><th>omschrijving</th><th>acties</th></tr>";
@@ -81,12 +80,10 @@ function verwijderProduct(id)
     function reWrite(text1, text2){
         text1.addEventListener('input', (event) => {
             text2.textContent = event.target.value;
-            console.log(event.target.id);
             if(event.target.id == 'user-box-price' || event.target.id == 'user-box-discount'){
                 uiteindelijkePrijs.innerHTML = "€"+calcDiscount(userBoxPrice.value, userBoxDiscount.value);
             }
             if(event.target.id == 'user-box-foto'){
-                console.log("ja bij foto");
                 fotopreview.src = "img/"+fotolayout.value;
             }
             if(event.target.id == "user-box-discount"){
