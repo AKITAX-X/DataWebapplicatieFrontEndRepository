@@ -100,7 +100,7 @@ function toonAlleProducten(){
 
         {
             tabelelem.innerHTML += "<tr><td>"+arrayMetProducten[i].naam + "</td><td>"+arrayMetProducten[i].prijs + 
-            "</td><td>"+arrayMetProducten[i].specificaties + "</td><td> <input type='button' onclick='verwijderProduct("+ arrayMetProducten[i].id
+            "</td><td>"+arrayMetProducten[i].specificaties + "</td><td> <input class='card-button' type='button' onclick='verwijderProduct("+ arrayMetProducten[i].id
             +")' value='Verwijder'></td></tr>";
 
         }

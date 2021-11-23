@@ -25,3 +25,15 @@ sizeBtns.forEach((item, i) => {
         checkedBtn = i;
     })
 })
+
+// Product input--------------------------------------------------------
+
+
+
+
+//description
+
+function goToDesc(){
+    document.getElementById("product-desc").scrollIntoView({behavior: "smooth", block: "center"});
+    console.log("hello world")
+}

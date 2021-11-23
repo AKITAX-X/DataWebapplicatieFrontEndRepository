@@ -53,8 +53,9 @@ function voegProductKaartToe(productObjACT) {
     console.log(productContainer);
     console.log(productObjACT.fotonaam)
 
-    var nieuweprijs = productObjACT.prijs - (productObjACT.discount / 100) * productObjACT.prijs
-
+    var nieuweprijs = productObjACT.prijs * 2; 
+    var nieuweprijs2 = productObjACT.prijs * 4; 
+    // - (productObjACT.discount / 100) * productObjACT.prijs
     nieuweprijs = nieuweprijs.toFixed(2);
 
 
@@ -62,20 +63,21 @@ function voegProductKaartToe(productObjACT) {
     productContainer[0].innerHTML += ` 
         <div class="product-card" onclick="productPagina(${productObjACT.id})">
         <div class="product-image">
-            <span class="discount-tag">${productObjACT.discount}% off</span>
-            <img src="/img/${productObjACT.fotonaam}" class="product-thumb" alt="">
+            <span class="discount-tag">50% off</span>
+            <img src="${productObjACT.fotonaam}" class="product-thumb" alt="">
             <button class="card-btn">add to whishlist</button>
         </div>
         <div class="product-info">
             <h2 class="product-brand" id="brand-input">${productObjACT.naam}</h2>
             <p class="product-specs" id="specs-input">${productObjACT.specificaties}</p>
-            <span class="price" id="price-input">€${nieuweprijs}</span><span class="actual-price">€${productObjACT.prijs}</span>
+            <span class="price" id="price-input">€${nieuweprijs}</span><span class="actual-price">€${nieuweprijs2}</span>
         </div>
     </div>  
         `;
 }
 
-
+{/* <img src="/img/${productObjACT.fotonaam}" class="product-thumb" alt=""></img> */}
+{/*  */}
 
 function productPagina(productId) {
 
@@ -95,12 +97,39 @@ xhr.onreadystatechange = function(){
     if(this.readyState == 4){
     console.log(this.responseText)
     var hetObj = JSON.parse(this.responseText);
+
     const slider = document.querySelector('.image-slider');
-    slider.style.backgroundImage = `url('/img/${hetObj.fotonaam}')`;
+    slider.style.backgroundImage = `url('${hetObj.fotonaam}')`;
+
+    let productBrandName = document.getElementById("product-brand");
+    productBrandName.textContent = hetObj.naam;
+
+    let productSpecs = document.getElementById("product-specs")
+    productSpecs.textContent = hetObj.specificaties;
+
+    let productDesc = document.getElementById("product-desc")
+    productDesc.textContent = hetObj.specificaties;
+
+    let productActualPrice = document.getElementById("product-actual-price")
+    productActualPrice.textContent = `€${hetObj.prijs * 4}`;
+
+    let productDiscount = document.getElementById("product-discount")
+    productDiscount.textContent = `50% off`;
+
+    let productNewPrice = document.getElementById("product-price")
+    // let nieuweprijs = hetObj.prijs - (hetObj.discount / 100) * hetObj.prijs
+    let nieuweprijs = hetObj.prijs * 2;
+    nieuweprijs = nieuweprijs.toFixed(2);
+    productNewPrice.textContent = `€${nieuweprijs}`;
+
+
     var geheimkastje = document.getElementById("geheimkastje");
     geheimkastje.value = hetObj.id;
+    
+
     const sliderimage = document.getElementById("product-images-1");
     sliderimage.src = "/img/" + hetObj.fotonaam;
+
     }
 }
 

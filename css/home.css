@@ -32,10 +32,9 @@
     font-weight: 500;
     margin-bottom: 40px;
     text-transform: capitalize;}
-    
-
+   
 .product-container{
-    padding: 0 10vw;
+    padding: 40px 10vw;
     display: flex;
     overflow-x: auto;
     scroll-behavior: smooth;}

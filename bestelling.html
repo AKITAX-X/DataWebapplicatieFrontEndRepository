@@ -15,8 +15,8 @@
     <link rel="stylesheet" href="/css/bestelling.css">
     <script>
         function maakBestellingAan(){
-            //var deItems = localStorage.getItem("geheimesleutelvancheapswinkel");
-            //console.log(deItems);
+            var deItems = localStorage.getItem("geheimesleutelvancheapswinkel");
+            console.log(deItems);
             var xhr = new XMLHttpRequest();
             xhr.onreadystatechange = function(){
                 if(this.readyState == 4){
