@@ -69,7 +69,7 @@ function voegProductKaartToe(productObjACT) {
         </div>
         <div class="product-info">
             <h2 class="product-brand" id="brand-input">${productObjACT.naam}</h2>
-            <p class="product-specs" id="specs-input">${productObjACT.specificaties}</p>
+            <p class="product-specs" id="specs-input">${productObjACT.specificaties}(${productObjACT.id})</p>
             <span class="price" id="price-input">€${nieuweprijs}</span><span class="actual-price">€${nieuweprijs2}</span>
         </div>
     </div>  

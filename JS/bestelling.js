@@ -14,11 +14,11 @@ function toonbestelling() {
            // overz.innerHTML = "<tr><th>YourCart</th><th>Price</th><th>Amount</th><th>DeleteButton</th></tr>";
             console.log(bestellingarray)
             for (var x = 0; x < bestellingarray.length; x++) {
-                overz.innerHTML +="<div class=\"bestellingov\">"+bestellingarray[x].klantNaam;
+                overz.innerHTML +="<div class=\"bestellingov\">"+bestellingarray[x].klantNaam+"("+bestellingarray[x].id+") <button onclick=verwijderBestelling("+bestellingarray[x].id+")>verwijderen</button>";
                 if(bestellingarray[x].besteldeProducten != null){
                     for(var y = 0 ; y < bestellingarray[x].besteldeProducten.length ; y++){
                         //console.log(bestellingarray[x].besteldeProducten[y]);
-                        overz.innerHTML +=  "<div class=\"itemov\">"+ bestellingarray[x].besteldeProducten[y].product.naam +"</div>";
+                        overz.innerHTML +=  "<div class=\"itemov\">"+ bestellingarray[x].besteldeProducten[y].product.naam +"("+bestellingarray[x].besteldeProducten[y].productId+")" +"</div>";
                     }
                 }else{
                     overz.innerHTML +=  "<div class=\"itemov\"> nog geen items geplaatst</div>";
@@ -32,7 +32,19 @@ function toonbestelling() {
     vanali.open("GET", "https://localhost:44344/api/Bestelling/alleBestellingen", true);
     vanali.send();
 }
+function verwijderBestelling(bestelid){
+    let productObj = {};
 
+    let vanali = new XMLHttpRequest();
+    vanali.onreadystatechange = function () {
+        if (this.readyState == 4) {
+            console.log("verwijderd");
+            window.location = window.location;
+        }
+    }
+    vanali.open("GET", "https://localhost:44344/api/bestelling/verwijderbestelling/"+bestelid, true);
+    vanali.send();
+}
 // tabelelem.innerHTML = "<tr><th>naam</th><th>prijs</th><th>omschrijving</th><th>acties</th></tr>";
 // for(var i = 0; i < arrayMetProducten.length; i++ )
 
@@ -48,6 +60,7 @@ function voegNaamToe(){
     xhr.onreadystatechange = function(){
         if(this.readyState == 4){
             document.getElementById("klantnaam-input").value = this.responseText;
+            window.location = window.location;
         }
     }
     xhr.open("GET",`https://localhost:44344/api/bestelling/voegBestellingToe/${klantNaam}`,true);
@@ -63,7 +76,7 @@ function maakBestellingAan(){
     xhr.onreadystatechange = function(){
         if(this.readyState == 4){
             console.log("ready met post");
-            document.getElementById("hetbestelnummer").value = this.responseText;
+//            document.getElementById("hetbestelnummer").value = this.responseText;
             voegProductToeAanBestelling();
         }
     }
@@ -77,7 +90,8 @@ function voegProductToeAanBestelling(){
     var productnummer = document.getElementById("hetproductnummer").value;
     xhr.onreadystatechange = function(){
         if(this.readyState == 4){
-            document.getElementById("hetbestelnummer").value = this.responseText;
+//            document.getElementById("hetbestelnummer").value = this.responseText;
+            window.location = window.location;
         }
     }
     xhr.open("GET",`https://localhost:44344/api/bestelling/voegProductToeAanBestelling/${bestelnummer}/${productnummer}`,true);
