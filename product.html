@@ -16,30 +16,7 @@
     <script>window.onload = function () {
         checkdetails();
     }
-    function voegtoeaanbestelling() {
-        var productid = document.getElementById("geheimkastje").value;
-        console.log("voeg toe aan bestelling");
-        console.log(">>" + productid);
-        window.location = "bestelling.html?productid=" + productid;
-
-        /**
-        * 1.get id from url
-        * 2.get current cart from the localstorage//
-        * 3.voeg huidige product toe aan lijst
-        * 4.sla de nieuwe lijst op in local storage
-        * 
-        */
-        const currentCart = window.localStorage.getItem("cart");
-        const cartObject = currentCart ? JSON.parse(currentCart) : {};
-        const product = cartObject[productid];
-        if (product) cartObject[productid] = +product + 1;
-        else cartObject[productid] = 1;
-
-        window.localStorage.setItem("cart", JSON.stringify(cartObject));
-        console.log(cartObject)
-
-
-    }
+    
 </script>
 
 
