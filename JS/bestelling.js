@@ -1,12 +1,7 @@
 productids = [];
 window.onload = function () {
-    //var bestellingproductids = [];
-    var bestellingproductids = JSON.parse(localStorage.getItem("geheimesleutelvancheapswinkel"));
-    const urlParams = new URLSearchParams(window.location.search);
-    const productid = urlParams.get('productid');
-    bestellingproductids.push(productid);
-    localStorage.setItem("geheimesleutelvancheapswinkel", JSON.stringify(bestellingproductids));
-    productids = bestellingproductids;
+    const bestellingproductids = JSON.parse(localStorage.getItem("cart") || {});
+    productids = Object.values(bestellingproductids);
     toonbestelling();
 }
 function toonbestelling() {
