@@ -11,10 +11,19 @@ function toonbestelling() {
             console.log(this.responseText)
             bestellingarray = JSON.parse(this.responseText)
             var overz = document.getElementById("overzicht");
-            overz.innerHTML = "<tr><th>YourCart</th><th>Price</th><th>Amount</th><th>DeleteButton</th></tr>";
-            console.log(bestellingarray.length)
+           // overz.innerHTML = "<tr><th>YourCart</th><th>Price</th><th>Amount</th><th>DeleteButton</th></tr>";
+            console.log(bestellingarray)
             for (var x = 0; x < bestellingarray.length; x++) {
-                overz.innerHTML += ` <tr><td>${bestellingarray[x].klantNaam}</tr>`;
+                overz.innerHTML +="<div class=\"bestellingov\">"+bestellingarray[x].klantNaam;
+                if(bestellingarray[x].besteldeProducten != null){
+                    for(var y = 0 ; y < bestellingarray[x].besteldeProducten.length ; y++){
+                        //console.log(bestellingarray[x].besteldeProducten[y]);
+                        overz.innerHTML +=  "<div class=\"itemov\">"+ bestellingarray[x].besteldeProducten[y].product.naam +"</div>";
+                    }
+                }else{
+                    overz.innerHTML +=  "<div class=\"itemov\"> nog geen items geplaatst</div>";
+                }
+                overz.innerHTML += "</div>";
                 // </td><td>${productids[x]}</td><td>${productids[x]}</td><td>${productids[x]}</td>
             }
         }
