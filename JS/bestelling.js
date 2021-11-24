@@ -53,5 +53,34 @@ function voegNaamToe(){
     xhr.open("GET",`https://localhost:44344/api/bestelling/voegBestellingToe/${klantNaam}`,true);
     //xhr.setRequestHeader("Content-Type","application/json");
     xhr.send();
+}
 
+
+function maakBestellingAan(){
+    var deItems = localStorage.getItem("geheimesleutelvancheapswinkel");
+    console.log(deItems);
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function(){
+        if(this.readyState == 4){
+            console.log("ready met post");
+            document.getElementById("hetbestelnummer").value = this.responseText;
+            voegProductToeAanBestelling();
+        }
+    }
+    xhr.open("GET","https://localhost:44344/api/bestelling/voegBestellingToe",true);
+    //xhr.setRequestHeader("Content-Type","application/json");
+    xhr.send();
+}
+function voegProductToeAanBestelling(){
+    var xhr = new XMLHttpRequest();
+    var bestelnummer = document.getElementById("hetbestelnummer").value;
+    var productnummer = document.getElementById("hetproductnummer").value;
+    xhr.onreadystatechange = function(){
+        if(this.readyState == 4){
+            document.getElementById("hetbestelnummer").value = this.responseText;
+        }
+    }
+    xhr.open("GET",`https://localhost:44344/api/bestelling/voegProductToeAanBestelling/${bestelnummer}/${productnummer}`,true);
+    //xhr.setRequestHeader("Content-Type","application/json");
+    xhr.send();
 }
