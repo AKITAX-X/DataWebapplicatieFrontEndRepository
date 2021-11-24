@@ -1,14 +1,3 @@
-<script>window.onload = function () {
-        checkdetails();
-    }
-    function voegtoeaanbestelling(){
-        var productid = document.getElementById("geheimkastje").value;
-        console.log("voeg toe aan bestelling");
-        console.log(">>"+productid);
-        window.location = "bestelling.html?productid="+productid;
-    }
-</script>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -24,23 +13,57 @@
 </head>
 
 <body>
+    <script>window.onload = function () {
+        checkdetails();
+    }
+    function voegtoeaanbestelling() {
+        var productid = document.getElementById("geheimkastje").value;
+        console.log("voeg toe aan bestelling");
+        console.log(">>" + productid);
+        window.location = "bestelling.html?productid=" + productid;
+
+        /**
+        * 1.get id from url
+        * 2.get current cart from the localstorage//
+        * 3.voeg huidige product toe aan lijst
+        * 4.sla de nieuwe lijst op in local storage
+        * 
+        */
+        const currentCart = window.localStorage.getItem("cart");
+        const cartObject = currentCart ? JSON.parse(currentCart) : {};
+        const product = cartObject[productid];
+        if (product) cartObject[productid] = +product + 1;
+        else cartObject[productid] = 1;
+
+        window.localStorage.setItem("cart", JSON.stringify(cartObject));
+        console.log(cartObject)
+
+
+    }
+</script>
+
+
+
+
+    <!-- ----------------------------------- -->
     <nav class="navbar"></nav>
 
     <section class="product-details">
         <div class="image-slider">
-            <div class="product-images">
+            <!-- <div class="product-images">
                 <img id="product-images-1" src="" class="active" alt="">
                 <img src="/img/bracelet 2.png" alt="">
                 <img src="/img/bracelet 3.png" alt="">
                 <img src="/img/bracelet 4.png" alt="">
-            </div>
+            </div> -->
         </div>
         <div class="details">
-            <h2 class="product-brand">brand</h2>
-            <p class="product-specs">Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
-            <span class="product-price">€99</span>
-            <span class="product-actual-price">€200</span>
-            <span class="product-discount">( 20% off )</span>
+            <h2 class="product-brand" id="product-brand">brand</h2>
+            <p class="product-specs" id="product-specs" onclick="goToDesc()">Lorem ipsum dolor sit amet, consectetur
+                adipiscing elit. </p>
+            <span class="product-price" id="product-price">€99</span>
+            <span class="product-actual-price" id="product-actual-price">€200</span>
+            <span class="product-discount" id="product-discount">20% off</span>
 
             <p class="product-sub-heading">Select size</p>
             <input type="radio" name="size" value="s" checked hidden id="s-size">
@@ -50,16 +73,17 @@
             <input type="radio" name="size" value="l" hidden id="l-size">
             <label for="l-size" class="size-radio-btn">l</label>
             <div>
-                <button class="btn cart-btn" id="toevoegknop" onclick="voegtoeaanbestelling()">add to cart</button>
-                <input type=text id="geheimkastje" >
-                <button class="btn">add to whishlist</button>
+                <button class="btn" id="toevoegknop" onclick="voegtoeaanbestelling()">Cart</button>
+                <input type=text id="geheimkastje" hidden>
+                <button class="btn">whishlist</button>
             </div>
         </div>
     </section>
 
     <section class="detail-des">
         <h2 class="heading">description</h2>
-        <p class="des">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Delectus molestias voluptas,
+        <p class="des" id="product-desc">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Delectus molestias
+            voluptas,
             consequuntur odio dolorum voluptatum dolor possimus officia. Doloribus quod commodi quaerat, quis sed hic in
             dolore corporis alias maxime accusamus praesentium earum adipisci reiciendis totam nostrum ipsum optio
             consequuntur dignissimos minus. Blanditiis iusto dolorum dolor minima incidunt error, aut at ab enim maxime

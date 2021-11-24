@@ -25,6 +25,13 @@
 
 .brand-logo{
     height: 90px;
+    cursor: pointer;
+    transition: 0.2s ;
+}
+
+.brand-logo:hover{
+    -webkit-filter: invert(100%);
+    transition: 0.2s;  
 }
 
 .nav-items{

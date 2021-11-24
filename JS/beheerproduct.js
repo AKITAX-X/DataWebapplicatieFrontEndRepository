@@ -107,3 +107,10 @@ function verwijderProduct(id)
     reWrite(userBoxSpecs, specsInput);
     reWrite(userBoxDiscount, discountInput);
     reWrite(fotolayout, fotopreview);
+
+
+    // Tabel------------------
+    // $(window).on("load resize ", function() {
+    //     var scrollWidth = $('.tbl-content').width() - $('.tbl-content table').width();
+    //     $('.tbl-header').css({'padding-right':scrollWidth});
+    //   }).resize();

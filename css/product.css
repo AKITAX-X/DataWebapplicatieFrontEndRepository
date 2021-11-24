@@ -45,20 +45,25 @@
 }
 
 .details .product-brand{
-    text-transform: capitalize;
+    text-transform: uppercase;
     font-size: 30px;
 }
 
 .details .product-specs{
     font-size: 25px;
     line-height: 30px;
-    height: auto;
+    height: 30px;
     margin: 15px 0 30px;
+    width: 200px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
+
 
 .product-price{
     font-weight: 700;
-    font-size: 30px;
+    font-size: 75px;
 }
 
 .product-actual-price{
@@ -70,8 +75,12 @@
 }
 
 .product-discount{
-    color: #ff7d7d;
+    color: white;
     font-size: 20px;
+    background: black;
+    padding: 5px;
+    border-radius: 5px;
+    text-transform: uppercase;
 
 }
 
@@ -104,23 +113,24 @@
 }
 
 .btn{
-    width: 48%;
+    width: 20%;
     padding: 20px;
     border-radius: 5px;
     background: none;
-    border: 1px solid #383838;
+    border: 2px solid #383838;
     color: #383838;
     font-size: 20px;
     cursor: pointer;
-    margin: 20px 0;
+    margin: 50px 10px;
     text-transform: capitalize;
 }
-
-.cart-btn{
-    margin-right: 2%;
+.btn:hover{
+    border: 2px solid white;
+    color: white;
     background: #383838;
-    color: #fff;
+    transition: 0.2s ease-in-out;
 }
+
 .detail-des{
     padding: 0 10vw;
     text-transform: capitalize;
