@@ -16,12 +16,9 @@ const createNav = () => {
     <li class="link-item"><a href="#" class="link" onclick="home()">home</a></li>
     <li class="link-item"><a href="#" class="link">women</a></li>
     <li class="link-item"><a href="#" class="link">men</a></li>
-    <li class="link-item"><a href="#" class="link" onclick="cardmaker()">cardmaker</a></li>
+    <li class="link-item"><a href="#" class="link" onclick="cardMaker()">cardmaker</a></li>
     <li class="link-item"><a href="#" class="link">accesoirres</a></li>
-
-    <!-- https://www.youtube.com/watch?v=0-NF3JMs4E8&ab_channel=ModernWeb
-    minuut 13:36 -->
-
+    <li class="link-item"><a href="#" class="link" onclick="bestellingSite()">bestellingen</a></li>
 
 </ul>`;
 }
@@ -34,6 +31,10 @@ function home() {
 
 }
 
-function cardmaker(){
+function cardMaker(){
     window.location = 'http://127.0.0.1:5500/beheerproduct.html'
+}
+
+function bestellingSite(){
+    window.location = 'http://127.0.0.1:5500/bestelling.html'
 }
